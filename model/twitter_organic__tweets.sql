@@ -1,7 +1,7 @@
 with account_history as (
 
     select *
-    from {{ ref('int_twitter_organic__latest_account') }}
+    from {{ ref('account_history') }}
     where is_most_recent_record = True
 
 ),
@@ -9,21 +9,21 @@ with account_history as (
 organic_tweet_report as (
 
     select *
-    from {{ var('organic_tweet_report_staging') }}
+    from {{ var('ORGANIC_TWEET_REPORT') }}
 
 ),
 
 tweet as (
 
     select *
-    from {{ var('tweet_staging') }}
+    from {{ var('tweet') }}
 
 ), 
 
 users as (
 
     select *
-    from {{ ref('int_twitter_organic__latest_user') }}
+    from {{ ref('twitter_user_history') }}
     where is_most_recent_record = True
 
 ),
@@ -38,8 +38,8 @@ joined as (
         tweet.account_id,
         tweet.post_url,
         account_history.account_name,
-        users.user_id,
-        users.user_name,
+        users.id,
+        users.screen_name,
         tweet.source_relation,
         sum(organic_tweet_report.app_clicks) as app_clicks,
         sum(organic_tweet_report.card_engagements) as card_engagements,
