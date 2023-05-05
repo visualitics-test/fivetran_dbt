@@ -3,11 +3,3 @@ packages:
   version: [">=0.2.0", "<0.3.0"]
 - package: fivetran/linkedin_pages
   version: 0.2.0
-- package: fivetran/social_media_reporting
-  version: [">=0.2.0", "<0.3.0"]
-  config-version: 2
-vars:
-    social_media_rollup__twitter_enabled: True
-    social_media_rollup__facebook_enabled: False
-    social_media_rollup__linkedin_enabled: True
-    social_media_rollup__instagram_enabled: False
