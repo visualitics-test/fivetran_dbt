@@ -4,4 +4,4 @@ packages:
 - package: fivetran/linkedin_pages
   version: 0.2.0
 - package: fivetran/social_media_reporting
-    version: [">=0.2.0", "<0.3.0"]
+  version: [">=0.2.0", "<0.3.0"]
